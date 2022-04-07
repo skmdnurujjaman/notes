@@ -2,12 +2,14 @@
 
 const express = require("express");
 const notes = require("./data/notes");
-
 require("dotenv").config();
-
 const app = express();
-const PORT = process.env.PORT || 2000;
 
+const PORT = process.env.PORT || 2000;
+const connectDB = require("./config/db");
+
+//CONNETING DB
+connectDB();
 //LIST OF API
 app.get("/", (req, res) => {
   res.send("This is get Api");
