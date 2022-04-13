@@ -1,9 +1,22 @@
 /** @format */
 
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button, Container, Row } from "react-bootstrap";
 import "./LandingPage.css";
 const LandingPage = () => {
+  const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   isLoggedIn();
+  // }, []);
+
+  // const isLoggedIn = () => {
+  //   let userInfo = localStorage.getItem("userInfo");
+  //   if (userInfo) {
+  //     navigate("/mynotes");
+  //   }
+  // };
   return (
     <div className="main">
       <Container>

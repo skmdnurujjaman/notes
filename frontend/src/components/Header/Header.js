@@ -9,9 +9,20 @@ import {
   Navbar,
   NavDropdown,
 } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
+import { logout } from "../../actions/userActions";
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+  const navigate = useNavigate();
+
+  const logoutHandler = () => {
+    dispatch(logout());
+    navigate("/");
+  };
   return (
     <Navbar bg="primary" expand="lg" variant="dark">
       <Container>
@@ -47,7 +58,9 @@ const Header = () => {
                 Profile
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">Logout</NavDropdown.Item>
+              <NavDropdown.Item onClick={logoutHandler}>
+                Logout
+              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
