@@ -47,22 +47,38 @@ const Header = ({ setSearch }) => {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link as={NavLink} to="/">
+            {/* <Nav.Link as={NavLink} to="/">
               Home
-            </Nav.Link>
+            </Nav.Link> */}
 
-            <Nav.Link as={NavLink} to="/mynotes">
-              My Notes
-            </Nav.Link>
-            <NavDropdown title={userInfo.name} id="navbarScrollingDropdown">
-              <NavDropdown.Item as={NavLink} to="/profile">
-                Profile
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item onClick={logoutHandler}>
-                Logout
-              </NavDropdown.Item>
-            </NavDropdown>
+            {userInfo ? (
+              <>
+                <Nav.Link as={NavLink} to="/mynotes">
+                  My Notes
+                </Nav.Link>
+                <NavDropdown
+                  title={userInfo && userInfo.name}
+                  id="navbarScrollingDropdown"
+                >
+                  <NavDropdown.Item as={NavLink} to="/profile">
+                    Profile
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item onClick={logoutHandler}>
+                    Logout
+                  </NavDropdown.Item>
+                </NavDropdown>
+              </>
+            ) : (
+              <>
+                <Nav.Link as={NavLink} to="/login">
+                  Login
+                </Nav.Link>
+                <Nav.Link as={NavLink} to="/register">
+                  Register
+                </Nav.Link>
+              </>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>

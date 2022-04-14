@@ -13,8 +13,8 @@ import { register } from "../../actions/userActions";
 
 const RegisterScreen = () => {
   const dispatch = useDispatch();
-  const userRegister = useSelector((state) => state.userRegister);
-  const { loading, error, userInfo } = userRegister;
+  const userLogin = useSelector((state) => state.userLogin);
+  const { loading, error, userInfo } = userLogin;
   const navigate = useNavigate();
 
   useEffect(() => {
